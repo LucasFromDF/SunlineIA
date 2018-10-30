@@ -1,0 +1,51 @@
+<ion-view hide-tabs="true">
+        <ion-header-bar class="bar bar-header bar-light bar-positive"><ion-icon name=""></ion-icon>
+            <a  class="button button-icon icon ion-ios-arrow-back " ng-click="back()"></a>
+            <ion-title class="bar-calm" style="text-align: center">请选择银行账号</ion-title>
+            <a class="button button-icon icon  ion-ios-arrow-back" style="color:#387ef5;"></a>
+        </ion-header-bar>
+        <ion-content class="h100">
+          <div class="bgcolor_gar">
+           <div class="padding list" >
+              <a class="item listFont1 marginTop20">
+                开户行名称
+                <span class="star">*</span>
+                <input class="item-note text_border " ng-model="input.bank_name">
+              </a>
+              <div class=" item-divider  pos_rel heightH100">
+                  <button class="button  button-positive select_button"ng-click="select()">
+                      <span>查询</span>
+                  </button>
+                  <button class="button  button-positive confirm_button"ng-click="next()">
+                      <span>确定</span>
+                  </button>
+              </div>
+              <ul class="list marginBom30" style="">
+                  <li >
+                      <div class="item pos_rel w100">
+                          <div class="tableListL padTop5 fs_16">开户行名称</div>
+                          <div class="tableListR padTop5 fs_16">银行账号</div>
+                      </div>
+                  </li>
+                  <ion-scroll direction="y" scroll-height>
+                  <li  ng-repeat="bankAccount in bankAccounts"  ng-class="{'selectColor':(isActiveAccount == bankAccount.ROWNUM_)}">
+                      <div class="item111_noBg pos_rel w100 " ng-click="choose(bankAccount)">
+                          <div style="width:50%;border-right:1px solid #E4E4E4;padding:11px 16px 16px 16px;">
+                              <div class=""style="height:auto;word-break:break-all;width:100%;">
+                                      <div style="text-align:center;">{{bankAccount.BANK_NAME}}</div> 
+                                </div>
+                          </div>                              
+                          <div class="tableListR h100" style="padding:11px 16px 16px 16px;">
+                              <div class=""style="word-break:break-all;width:100%;">
+                                  <div style="text-align:center;">{{bankAccount.RECEIVE_BANK_ACCOUNT}}</div> 
+                               </div>  
+                          </div>
+                      </div>
+                    </ion-scroll>
+                  </li>      
+                </ul>
+      
+           </div>
+          </div>
+  </ion-content>
+</ion-view>

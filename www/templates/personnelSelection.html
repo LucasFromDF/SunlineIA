@@ -1,0 +1,44 @@
+<ion-view hide-tabs="true">
+    <ion-header-bar class="bar bar-header bar-light bar-positive"><ion-icon name=""></ion-icon>
+        <a  class="button button-icon icon ion-ios-arrow-back " ng-click="back()"></a>
+        <ion-title class="bar-calm" style="text-align: center">请选择加签人员</ion-title>
+        <a class="button button-icon icon  ion-ios-arrow-back" style="color:#387ef5;"></a>
+    </ion-header-bar>
+    <ion-content class="h100 bgcolor_gar">    
+       <div class="padding list" >
+          <a class="item listFont1 marginTop20">
+            姓名
+            <span class="star">*</span>
+            <input class="item-note text_border choose_input" ng-model="input.name">
+          </a>
+          <div class=" item-divider  pos_rel heightH100">
+              <button class="button  button-positive select_button"ng-click="select()">
+                  <span>查询</span>
+              </button>
+              <button class="button  button-positive confirm_button"ng-click="next()">
+                  <span>确定</span>
+              </button>
+          </div>
+          
+          <ul class="list marginBom30" >
+              <li >
+                  <div class="item pos_rel w100">
+                      <div class="userListL padTop5 fs_16">用户编码</div>
+                      <div class="userListM padTop5 fs_16">用户姓名</div>
+                      <div class="userListR padTop5 fs_16">机构名称</div>
+                  </div>
+              </li>
+              <ion-scroll direction="y" scroll-height>
+              <li  ng-repeat="clerk in clerks">
+                  <div class="item pos_rel w100" ng-class="{'selectColor':(isActiveId == clerk.usercode)}" ng-click="choose(clerk)">
+                        <div class="userListL padTop7 listFont1">{{clerk.usercode}}</div>
+                        <div class="userListM padTop7 listFont1">{{clerk.username}}</div>
+                        <div class="userListR padTop7 listFont1">{{clerk.deptname}}</div>
+                  </div>
+              </li>      
+            </ion-scroll>
+            </ul>
+  
+       </div>  
+    </ion-content>
+  </ion-view>

@@ -1,0 +1,57 @@
+<ion-view>
+        <ion-header-bar class="bar bar-header bar-light bar-positive"><ion-icon name=""></ion-icon>
+            <ion-title class="bar-calm" style="text-align: center">已办单据</ion-title>
+        </ion-header-bar>
+        <ion-header-bar class="bar-subheader" style="padding: 0;top:44px;height:35px">
+            <div class="w100  pos_rel">
+                <div  class="button1" ng-click='test(1)'><a ng-class="{true: 'fc_white', false: 'fc_gray'}[bt1]">全部</a>
+                </div>
+                <div class="button2" ng-click='test(2)'><a ng-class="{true: 'fc_white', false: 'fc_gray'}[bt2]">业务申请</a>
+                </div>
+                <div class="button3" ng-click='test(4)'><a ng-class="{true: 'fc_white', false: 'fc_gray'}[bt4]">付款审批</a>
+                </div>
+            </div>
+        </ion-header-bar>
+        <ion-content style="top:79px">
+            <div class=" h100 w100">             
+                <ion-list>
+                    <ion-item class=" item-icon-right "style="border-bottom:10px solid #EEEEEE;"  ng-repeat="doneWork in doneWorks"  ng-click="clearCash(doneWork.taskid,doneWork.busstp,doneWork.proccd,doneWork.ispriv,doneWork.taskType,doneWork.notifyId,doneWork.brchcd,doneWork.procid)">
+                    <ul>
+                        <li>
+                            <a class=" listFont1" >
+                                标题 :
+                                <span class="item-note1" style="padding-left:28px;">{{doneWork.businesstitle}}</span>                    
+                            </a>
+                        </li>
+                        <li>
+                            <a class=" listFont1" >
+                                表单单号 :
+                                <span class="item-note1">{{doneWork.busstp}}</span>                    
+                            </a>
+                        </li>
+                        <li>
+                            <a class=" listFont1" >
+                                流程名称 :
+                                <span class="item-note1">{{doneWork.procna}}</span>                    
+                            </a>
+                        </li>
+                        <li>
+                            <a class=" listFont1" >
+                                申请用户 :
+                                <span class="item-note1">{{doneWork.applyusername}}</span>                    
+                            </a>
+                        </li>
+                        <li>
+                            <a class=" listFont1" >
+                                申请日期 :
+                                <span class="item-note1">{{doneWork.applytime}}</span>                    
+                            </a>
+                        </li>
+                    </ul>
+                    <i class="icon ion-chevron-right icon-accessory"></i>
+                    </ion-item>
+                </ion-list>
+            </div>     
+      <ion-infinite-scroll ng-if="hasMore()" on-infinite="loadMore()" distance="1%"></ion-infinite-scroll> 
+  </ion-content>
+</ion-view>

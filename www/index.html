@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title></title>
+
+    <link rel="manifest" href="manifest.json">
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+    <script src="lib/jquery-1.11.3.min.js"></script>
+    <script src="cordova.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/controllers.js"></script>
+    <script src="js/services.js"></script>
+    <script src="lib/ion-datetime-picker/release/ion-datetime-picker.min.js"></script>
+    <script src="lib/ionic-datepicker/dist/ionic-datepicker.bundle.min.js"></script>
+    <link href="lib/ion-datetime-picker/release/ion-datetime-picker.min.css" rel="stylesheet">
+    <!-- <script src="js/inject.js"></script> -->
+    <script type="text/javascript">
+      var getTodoTaskAndNotifys_RESULT = ""; //代办 列表
+      var getUser_RESULT = "";               //用户列表
+      var STAFF_INFO_RESULT = "";            //用户信息
+      var queryFormDetail_RESULT = "";		//详情
+      var queryCompletedTask_RESULT = "";		//已办列表
+      var creditActor_RESULT = "";        // 银行账户
+      var saveFormDetail_RESULT = ""; //  保存返回数据
+      var submitTaskParam_RESULT = ""; //  提交
+      var addTasks_RESULT = ""; //  加签
+      var jointlyTasks_RESULT = ""; //  会办
+      var fileDownload_RESULT = ""; //  文件下载
+      var queryRetuanable_RESULT = ""; //  获取可驳回节点
+      var returnTask_RESULT = ""; // 驳回操作
+      var queryRouteList_RESULT = ""; // 流程列表
+      var organActor_RESULT = ""; // 选择机构列表
+      //todo 下发删除....... 假数据
+      // queryCompletedTask_RESULT = CIBH5SDK.getQueryCompletedTask();
+      //todo 下发删除.......
+      function ReceiveResult(result) {
+            console.log(">>>" + result + "<<<");
+            if (result) {
+                var resultJson = JSON.parse(result);
+                if (resultJson.actionName == "getTodoTaskAndNotifys") {
+                	getTodoTaskAndNotifys_RESULT = result;
+                }
+                else if (resultJson.actionName == "getUser") {
+                	getUser_RESULT = result;
+                }
+                else if (resultJson.actionName == "queryFormDetail") {
+                	queryFormDetail_RESULT = result;
+                }
+                else if (resultJson.actionName == "queryCompletedTask") {
+                	queryCompletedTask_RESULT = result;
+                }
+                else if (resultJson.actionName == "creditActor") {
+                	creditActor_RESULT = result;
+                }
+                else if (resultJson.actionName == "saveFormDetail") {
+                	saveFormDetail_RESULT = result;
+                }
+                else if (resultJson.actionName == "submitTask") {
+                	submitTaskParam_RESULT = result;
+                }
+                else if (resultJson.actionName == "addTasks") {
+                	addTasks_RESULT = result;
+                }
+                else if (resultJson.actionName == "jointlyTasks") {
+                	jointlyTasks_RESULT = result;
+                }
+                else if (resultJson.actionName == "fileDownload") {
+                	fileDownload_RESULT = result;
+                }
+                else if (resultJson.actionName == "queryRetuanableNodes") {
+                	queryRetuanable_RESULT = result;
+                }
+                else if (resultJson.actionName == "returnTask") {
+                	returnTask_RESULT = result;
+                }
+                else if (resultJson.actionName == "queryRouteList") {
+                	queryRouteList_RESULT = result;
+                }
+                else if (resultJson.actionName == "organActor") {
+                	organActor_RESULT = result;
+                }
+            }
+          }
+      function getStaffInfoResult(result) {
+          console.log(">>>STAFF_INFO_RESULT" + result + "<<<");
+          STAFF_INFO_RESULT = result;
+      }
+    </script>
+    <!-- <script src="lib/angular/angular.min.js"></script> -->
+  </head>
+  <body ng-app="starter">
+    <!-- <ion-nav-bar class="bar-positive" align-title="center">
+        <ion-nav-back-button >          
+        </ion-nav-back-button>
+    </ion-nav-bar> -->
+    <ion-nav-view>
+    </ion-nav-view>
+  </body>
+</html>

@@ -1,0 +1,45 @@
+<ion-view  view-title="登录" hide-nav-bar="true"  hide-tabs="true"> 
+    <ion-content class="w100">
+        <div  class="list padding">
+
+            <div class="w100">
+                <img class="w100"src="img/logo.png"/>
+            </div>
+            <ion-slide-box class="w100"on-slide-changed="slideHasChanged($index)" auto-play="true" does-continue="true"
+                       slide-interval=5000 show-pager="false" pager-click="pageClick(index)"
+                       active-slide="model.activeIndex" delegate-handle="delegateHandler" ng-click="coverFlowClick()">
+                <ion-slide class="w100">
+                    <div class="box" style="width:100%">
+                    <img class="w100" src="img/b1.jpg">
+                    </div>
+                </ion-slide>
+                <ion-slide class="w100">
+                    <div class="box" style="width:100%">
+                    <img class="w100" src="img/b2.jpg">
+                    </div>
+                </ion-slide>
+                <ion-slide class="w100">
+                    <div class="box" style="width:100%">
+                    <img class="w100" src="img/b3.jpg">
+                    </div>
+                </ion-slide>
+            </ion-slide-box>
+            <ion-slide-box style="">
+                <ion-slide ng-repeat="prizes in items" class="row"  style="height:250px;margin-top:0px;padding-top:0px;">
+                    <div class="col" style="" ng-repeat="prize in prizes.prizeList" >
+                        <div ng-click="next(prize.url)">                               
+                            <img src="{{prize.col1Src}}" class="t_border1" style="width:100%;height:100%;"/>
+                        </div>
+                        <div ng-click="pop_confirm()">                               
+                            <img src="{{prize.col2Src}}"  class="t_border1"  style="width:100%;height:100%;"/>
+                        </div>                                                                      
+                     </div>
+                </ion-slide>
+            </ion-slide-box>
+        </div>
+    </ion-content>
+    <div class="bar bar-footer bar-positive" >
+            <div class="title">选择进入的系统</div>
+      </div>
+      
+</ion-view>

@@ -1,0 +1,1071 @@
+<ion-view  hide-tabs="true">
+        <ion-header-bar class="bar bar-header bar-light bar-positive"><ion-icon name=""></ion-icon>
+            <a href="#/tab/pendingWork" class="button button-icon icon  ion-ios-arrow-back"></a>
+            <ion-title class="bar-calm" style="text-align: center">单据详情</ion-title>
+            <a class="button button-icon icon  ion-ios-arrow-back" style="color:#387ef5;"></a>
+        </ion-header-bar>
+        <ion-header-bar class="bar-subheader" style="padding: 0;height:35px">
+            <div class="w100 h35 pos_rel">
+                <div  class="button5 left0" ng-click='test(1)'><a ng-class="{true: 'fc_white', false: 'fc_gray'}[form_del]">表单详情</a>
+                </div>
+                <div class="button5 left50" ng-click='test(2)'><a ng-class="{true: 'fc_white', false: 'fc_gray'}[app_pro]">审批流程</a>
+                </div>
+            </div>
+        </ion-header-bar>
+    <ion-content  style="top:79px">
+            <div class=" h100 w100">         
+                <div class="list padding" ng-show="form_del">  
+                    <div ng-show="pendingWorkId == 'buy'|| pendingWorkId == 'management'|| pendingWorkId == 'wander'|| pendingWorkId == 'investment' || pendingWorkId == 'fundInvestment'">   
+                    <ul class="list">
+                        <li class="item item-divider item-text-wrap dd3-bg center">
+                            <span class="listFont2">业务申请</span>
+                        </li>
+                        <li>
+                            <a class="item listFont1" >
+                                业务审查单号
+                                <span class="item-note">{{doneWork.des_apply_number}}</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="item listFont1" >
+                                项目名称
+                                <span class="item-note">{{doneWork.project_name}}</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="item listFont1" >
+                                议题类型
+                                <span class="item-note">{{doneWork.Titletype_name}}</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="item listFont1" >
+                                经办人
+                                <span class="item-note">{{doneWork.username}}</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="item listFont1" >
+                                经办人部门
+                                <span class="item-note">{{doneWork.deptname}}</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="item listFont1" >
+                                申请时间
+                                <span class="item-note">{{doneWork.apply_date|date: "yyyy-MM-dd"}}</span>
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="list">
+                        <li class="item item-divider item-text-wrap dd3-bg center">
+                            <span class="listFont2">基本信息</span>
+                        </li>
+                        <div ng-show="pendingWorkId == 'buy'">
+                            <li>
+                                <a class="item listFont1" >
+                                    债券资产户数
+                                    <span class="item-note">{{doneWork.asset_obli_right_door_count|toThousands}}</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="item listFont1" >
+                                    物权资产户数
+                                    <span class="item-note">{{doneWork.asset_real_right_door_count|toThousands}}</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="item listFont1" >
+                                    股权资产户数
+                                    <span class="item-note">{{doneWork.asset_stock_right_door_count|toThousands}}</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="item listFont1" >
+                                    建议收购价格
+                                    <span class="item-note">{{doneWork.suggested_purchase_price|toThousands}}</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="item listFont1" >
+                                    收购方式
+                                    <span class="item-note">{{doneWork.purchase_way_name}}</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="item listFont1" >
+                                    收购标的
+                                    <span class="item-note">{{doneWork.purchase_target}}</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="item listFont1" >
+                                    交易基准日
+                                    <span class="item-note">{{doneWork.trading_base_date|date: "yyyy-MM-dd"}}</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="item listFont1" >
+                                    付款时间
+                                    <span class="item-note">{{doneWork.pay_time|date: "yyyy-MM-dd"}}</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="item listFont1" >
+                                    计划平均处理年限
+                                    <span class="item-note">{{doneWork.disp_avl_plan_date}}</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="item listFont1" >
+                                    资金来源
+                                    <textarea  rows="3" class="marTop10 text_border w100" ng-style="{color:doneWork.app_node!='111'?'#B9B9B9':'#4B4B4B'}" maxlength="1000" ng-disabled="doneWork.app_node!='111'" > {{doneWork.capital_source}}</textarea>                    
+                                </a>
+                            </li>
+                            <li>
+                                <a class="item listFont1" >
+                                    收购方案详细说明
+                                    <textarea  rows="3" class="marTop10 text_border w100" ng-style="{color:doneWork.app_node!='111'?'#B9B9B9':'#4B4B4B'}" maxlength="1000" ng-disabled="doneWork.app_node!='111'" > {{doneWork.prj_plan_detail_desc}}</textarea>                    
+                                </a>
+                            </li>
+                            <li>
+                                <a class="item listFont1" >
+                                    收购资产明细变更说明
+                                    <textarea  rows="3" class="marTop10 text_border w100" ng-style="{color:doneWork.app_node!='111'?'#B9B9B9':'#4B4B4B'}" maxlength="1000" ng-disabled="doneWork.app_node!='111'" > {{doneWork.asset_remark}}</textarea>                    
+                                </a>
+                            </li>
+                            <li>
+                                <a class="item listFont1" >
+                                    其他说明
+                                    <textarea  rows="3" class="marTop10 text_border w100" ng-style="{color:doneWork.app_node!='111'?'#B9B9B9':'#4B4B4B'}" maxlength="1000" ng-disabled="doneWork.app_node!='111'" > {{doneWork.other_description}}</textarea>                    
+                                </a>
+                            </li>                                    
+                        </div>
+                        <div ng-show="pendingWorkId == 'management' || pendingWorkId == 'wander'">
+                            <div ng-show="pendingWorkId == 'management'">
+                                <li>
+                                    <a class="item listFont1" >
+                                        债券总户数
+                                        <span class="item-note">{{doneWork.obli_right_door_count_sum|toThousands}}</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="item listFont1" >
+                                        抵债总户数
+                                        <span class="item-note">{{doneWork.debt_xiangshu|toThousands}}</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="item listFont1" >
+                                        杂项总户数
+                                        <span class="item-note">{{doneWork.zaxiang_door_count_sum|toThousands}}</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="item listFont1" >
+                                        预计回收总金额
+                                        <span class="item-note">{{doneWork.plan_rec_total|toThousands}}</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="item listFont1" >
+                                        预计回收本金
+                                        <span class="item-note">{{doneWork.plan_rec_amount|toThousands}}</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="item listFont1" >
+                                        预计回收利息
+                                        <span class="item-note">{{doneWork.plan_rec_rent|toThousands}}</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="item listFont1" >
+                                        其他金额
+                                        <span class="item-note">{{doneWork.debt_other|toThousands}}</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="item listFont1" >
+                                        抵债收益
+                                        <span class="item-note">{{doneWork.debt_profit|toThousands}}</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="item listFont1" >
+                                        抵债租金
+                                        <span class="item-note">{{doneWork.debt_rental|toThousands}}</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="item listFont1" >
+                                        付款方式
+                                        <span class="item-note">{{doneWork.pay_type}}</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="item listFont1" >
+                                        税费
+                                        <span class="item-note">{{doneWork.tax_fee_main|toThousands}}</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="item listFont1" >
+                                        处置标的范围
+                                        <span class="item-note">{{doneWork.range}}</span>
+                                    </a>
+                                </li>
+                            </div>
+                            <li>
+                                <a class="item listFont1" >
+                                    申请处置方式
+                                    <span class="item-note">{{doneWork.apply_deal_type_name}}</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="item listFont1" >
+                                    受让方
+                                    <span class="item-note">{{doneWork.shou_rang_fang}}</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="item listFont1" >
+                                    转让基准日
+                                    <span class="item-note">{{doneWork.transfer_date|date: "yyyy-MM-dd"}}</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="item listFont1" >
+                                    处置底价
+                                    <span class="item-note">{{doneWork.detal_price|toThousands}}</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="item listFont1" >
+                                    处置费用
+                                    <span class="item-note">{{doneWork.deal_fee|toThousands}}</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="item listFont1" >
+                                    其他处置方式说明
+                                    <span class="item-note">{{doneWork.apply_deal_type_desc}}</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="item listFont1" >
+                                    付款期限
+                                    <span class="item-note">{{doneWork.payment_date|date: "yyyy-MM-dd"}}</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="item listFont1" >
+                                    是否公示
+                                    <span class="item-note">{{doneWork.is_gongshi_name}}</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="item listFont1" >
+                                    项目背景
+                                    <textarea  rows="3" class="marTop10 text_border w100" ng-style="{color:doneWork.app_node!='111'?'#B9B9B9':'#4B4B4B'}" maxlength="1000" ng-disabled="doneWork.app_node!='111'" > {{doneWork.project_background}}</textarea>                    
+                                </a>
+                            </li>
+                            <li>
+                                <a class="item listFont1" >
+                                    方案的比较
+                                    <textarea  rows="3" class="marTop10 text_border w100" ng-style="{color:doneWork.app_node!='111'?'#B9B9B9':'#4B4B4B'}" maxlength="1000" ng-disabled="doneWork.app_node!='111'" > {{doneWork.program_compare}}</textarea>                    
+                                </a>
+                            </li>
+                            <li>
+                                <a class="item listFont1" >
+                                    其他
+                                    <textarea  rows="3" class="marTop10 text_border w100" ng-style="{color:doneWork.app_node!='111'?'#B9B9B9':'#4B4B4B'}" maxlength="1000" ng-disabled="doneWork.app_node!='111'" > {{doneWork.other}}</textarea>                    
+                                </a>
+                            </li>
+                        </div>
+                        <div ng-show="pendingWorkId == 'investment' || pendingWorkId == 'fundInvestment'">
+                            <li>
+                                <a class="item listFont1" >
+                                    投资规模
+                                    <span class="item-note">{{doneWork.investment_scale|toThousands}}</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="item listFont1" >
+                                    投资期限
+                                    <span class="item-note">{{doneWork.time_horizon}}</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="item listFont1" >
+                                    收益率(%)
+                                    <span class="item-note">{{doneWork.rate_return}}</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="item listFont1" >
+                                    投资方案说明
+                                    <textarea  rows="3" class="marTop10 text_border w100" ng-style="{color:doneWork.app_node!='111'?'#B9B9B9':'#4B4B4B'}" maxlength="1000" ng-disabled="doneWork.app_node!='111'" > {{doneWork.talk_content}}</textarea>                    
+                                </a>
+                            </li>
+                            <li>
+                                <a class="item listFont1" >
+                                    项目背景
+                                    <textarea  rows="3" class="marTop10 text_border w100" ng-style="{color:doneWork.app_node!='111'?'#B9B9B9':'#4B4B4B'}" maxlength="1000" ng-disabled="doneWork.app_node!='111'" > {{doneWork.project_background}}</textarea>                    
+                                </a>
+                            </li>                                  
+                        </div>
+                        <li>
+                            <a class="item listFont1" >
+                                业务部门意见 <span class="star">*</span>
+                                <textarea  rows="3" class="marTop10 text_border w100" ng-style="{color:((editableBusinessForm_button == 'false')|| (doneWork.app_node!='deptMgr'))?'#B9B9B9':'#4B4B4B'}" maxlength="1000" ng-disabled="(editableBusinessForm_button == 'false')|| (doneWork.app_node!='deptMgr')"  ng-model="doneWork.business_view"></textarea>                    
+                            </a>
+                        </li>
+                        <li>
+                            <a class="{{business_view_Class}}" >
+                                业务审查部门意见 <span class="star">*</span>
+                                <textarea  rows="3" class="marTop10 text_border w100" ng-style="{color:((editableBusinessForm_button == 'false')|| (doneWork.app_node!='reviewDirecto'))?'#B9B9B9':'#4B4B4B'}" ng-model="doneWork.business_censor_view" ng-disabled="(editableBusinessForm_button == 'false')|| (doneWork.app_node!='reviewDirecto')" maxlength="1000"></textarea>                    
+                            </a>
+                        </li>
+                        <li>
+                            <div class="{{business_censor_view_Class}}">
+                            <div class="input-label" style="color: #444444 !important;font-size: 14px;">
+                                是否上会<span class="star">*</span>
+                            </div>
+                            <select ng-model="in.is_meetresolution" ng-style="{color:((editableBusinessForm_button == 'false')||(doneWork.app_node!='reviewLeadership'))?'#B9B9B9':'#4B4B4B'}" ng-init="doneWork.is_meetresolution != null?in.is_meetresolution=majors[(doneWork.is_meetresolution.substring(1,2))]:in.is_meetresolution=majors[0]" ng-options="major.name for major in majors"  ng-disabled="(editableBusinessForm_button == 'false')|| (doneWork.app_node!='reviewLeadership')"></select>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="{{is_meetresolution_Class}}" >
+                                有权审批人
+                                <span class="star">*</span>  
+                                <div class="searchDiv" ng-style="{color:doneWork.examineOperatorName!=null&&((editableBusinessForm_button == 'false')||(doneWork.app_node!='handle1'))?'#B9B9B9':'#4B4B4B'}">{{doneWork.examineOperatorName}}
+                                    <div class = "icon ion-search searchIcon fc_bule"ng-click="((editableBusinessForm_button == 'false')||(doneWork.app_node!='handle1')) || searchPeope1()"  ng-disabled="(editableBusinessForm_button == 'false')||(doneWork.app_node!='handle1')"></div>
+                                </div>                       
+                            </div>
+                        </li>
+                    </ul>
+                    <ul class="list" ng-show="doneWork.is_meetresolution=='01' && (doneWork.app_node == 'handle1' || doneWork.app_node == 'youquan' || doneWork.app_node == 'handle2' || doneWork.app_node == 'zonghegang' || doneWork.app_node ==  'yewuzonghe' || doneWork.app_node =='yewupifu')">
+                        <li class="item item-divider item-text-wrap dd3-bg center">
+                            <span class="listFont2">上会信息</span>
+                        </li>
+                        <li>
+                            <a class="item listFont1" >
+                                会议期次(_年第_期)
+                                <span class="star">*</span>
+                                <input class="item-note"type="text" ng-model="doneWork.meet_issue" ng-style="{color:doneWork.meet_issue!=null&&((editableBusinessForm_button == 'false')||(doneWork.app_node!='handle1'))?'#B9B9B9':'#4B4B4B'}" ng-disabled="(editableBusinessForm_button == 'false')||(doneWork.app_node!='handle1')" maxlength="15" style="margin-top:-4px;width:130px;height:30px;border-bottom:1px solid #F2F2F2;" placeholder="请输入会议期次">
+                            </a>
+                        </li>
+                        <li>
+                            <div class="{{meet_issue_Class}}" >
+                                主持人
+                                <span class="star">*</span>  
+                                <div class="searchDiv" ng-style="{color:doneWork.hostName!=null&&((editableBusinessForm_button == 'false')||(doneWork.app_node!='handle1'))?'#B9B9B9':'#4B4B4B'}">{{doneWork.hostName}}
+                                    <div class = "icon ion-search searchIcon fc_bule" ng-disabled="(editableBusinessForm_button == 'false')||(doneWork.app_node!='handle1')" ng-click="((editableBusinessForm_button == 'false')||(doneWork.app_node!='handle1')) || searchPeope2()"></div>
+                                </div>                       
+                            </div>
+                        </li>
+                        <li>
+                            <div class="{{hostName_Class}}">
+                                <div class="input-label" style="color: #444444 !important;font-size: 14px;">
+                                    上会表决结论<span class="star">*</span>
+                                        </div>
+                                        <select ng-model="in.vote_conclusion" ng-style="{color:((editableBusinessForm_button == 'false')||(doneWork.app_node!='handle1'))?'#B9B9B9':'#4B4B4B'}" ng-init="doneWork.vote_conclusion != null?in.vote_conclusion=results[(doneWork.vote_conclusion.substring(1,3))]:in.vote_conclusion=results[0]" ng-options="result.name for result in results"  ng-disabled="(editableBusinessForm_button == 'false')||(doneWork.app_node!='handle1')"></select>
+                            </div>
+                        </li>
+                        <li>
+                            <a class="{{vote_conclusion_Class}}" >
+                                上会表决情况 <span class="star">*</span>
+                                <textarea  rows="3" class="marTop10 text_border w100" ng-style="{color:((editableBusinessForm_button == 'false')||(doneWork.app_node!='handle1'))?'#B9B9B9':'#4B4B4B'}" ng-model="doneWork.vote_situation" maxlength="1000" ng-disabled="(editableBusinessForm_button == 'false')||(doneWork.app_node!='handle1')"></textarea>                    
+                            </a>
+                        </li>
+                        <li>
+                            <div class="{{vote_situation_Class}}">
+                                    <div class="input-label" style="color: #444444 !important;font-size: 14px;">
+                                        有权审批人意见<span class="star">*</span>
+                                    </div>
+                                    <select ng-model="in.reply_conclusion" ng-style="{color:((editableBusinessForm_button == 'false')||(doneWork.app_node!='youquan'))?'#B9B9B9':'#4B4B4B'}" ng-init="doneWork.reply_conclusion != null?in.reply_conclusion=results[(doneWork.reply_conclusion.substring(1,3))]:in.reply_conclusion=results[0]" ng-options="result.name for result in results"  ng-disabled="(editableBusinessForm_button == 'false')||(doneWork.app_node!='youquan')"></select>
+                            </div>
+                        </li>
+                        <li>
+                            <a class="{{reply_conclusion_Class}}" >
+                                备注
+                                <textarea  rows="3" class="marTop10 text_border w100" ng-style="{color:((editableBusinessForm_button == 'false')||(doneWork.app_node!='youquan'))?'#B9B9B9':'#4B4B4B'}"  ng-model="doneWork.approval_opinion" ng-disabled="(editableBusinessForm_button == 'false')||(doneWork.app_node!='youquan')" maxlength="1000"></textarea>                    
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="list" ng-show="doneWork.is_meetresolution=='01' && (doneWork.app_node == 'handle2' || doneWork.app_node == 'yewupifu' || doneWork.app_node ==  'nodeTen')">
+                        <li class="item item-divider item-text-wrap dd3-bg center">
+                            <span class="listFont2">批复信息</span>
+                        </li>
+                        <li>
+                            <div class="item listFont1 pos_rel" >
+                                上会日期
+                                <span class="star">*</span>  
+                                <div class="searchDiv" ng-style="{color:((editableBusinessForm_button == 'false')||(doneWork.app_node!='handle2'))?'#B9B9B9':'#4B4B4B'}">{{doneWork.meet_date| date: "yyyy-MM-dd"}}
+                                <ionic-datepicker input-obj="datepickerObjectEnd1"  ng-show ="(editableBusinessForm_button == 'false')||(doneWork.app_node=='handle2')"> 
+                                        <div class = "icon ion-ios-calendar calendarIcon fc_bule" ng-model="doneWork.meet_date" ng-disabled="(editableBusinessForm_button == 'false')||(doneWork.app_node!='handle2')"></div>
+                                </ionic-datepicker>
+                                </div>                       
+                            </div>
+                        </li>
+                        <li>
+                            <div class="{{meet_date_Class}}" >
+                                批复日期
+                                <div class="searchDiv" ng-style="{color:((editableBusinessForm_button == 'false')||(doneWork.app_node!='handle2'))?'#B9B9B9':'#4B4B4B'}">{{doneWork.summary_issuing_date| date: "yyyy-MM-dd"}}
+                                        <ionic-datepicker input-obj="datepickerObjectEnd2" ng-show ="(editableBusinessForm_button == 'false')||(doneWork.app_node=='handle2')">
+                                            <div class = "icon ion-ios-calendar calendarIcon fc_bule"  ng-model="doneWork.summary_issuing_date" ng-disabled="(editableBusinessForm_button == 'false')||(doneWork.app_node!='handle2')"></div>
+                                        </ionic-datepicker>
+                                </div>                           
+                            </div>
+                        </li>
+                        <li>
+                            <div class="{{max_purchasing_price_Class}}">
+                                <div class="input-label" style="color: #444444 !important;font-size: 14px;">
+                                    批复结论<span class="star">*</span>
+                                </div>
+                                <select ng-model="in.vote_result" ng-style="{color:((editableBusinessForm_button == 'false')||(doneWork.app_node!='handle2'))?'#B9B9B9':'#4B4B4B'}" ng-init="doneWork.vote_result != null?in.vote_result=votes[(doneWork.vote_result.substring(1,3))]:in.vote_result=votes[0]" ng-options="vote.name for vote in votes"  ng-disabled="(editableBusinessForm_button == 'false')||(doneWork.app_node!='handle2')"></select>
+                            </div>
+                        </li>   
+                        <div ng-show="pendingWorkId == 'buy'">
+                            <li>
+                                <div class="{{summary_issuing_date_Class}}">
+                                    <div class="input-label" style="color: #444444 !important;font-size: 14px;">
+                                        是否收购加处置<span class="star">*</span>
+                                    </div>
+                                    <select ng-model="in.bugorsold" ng-style="{color:((editableBusinessForm_button == 'false')||(doneWork.app_node!='handle2'))?'#B9B9B9':'#4B4B4B'}" ng-init="doneWork.bugorsold != null?in.bugorsold=majors[(doneWork.bugorsold.substring(1,3))]:in.bugorsold=majors[0]" ng-options="major.name for major in majors"  ng-disabled="(editableBusinessForm_button == 'false')||(doneWork.app_node!='handle2')"></select>
+                                </div>
+                            </li>
+                            <li ng-show="in.vote_result.id == '01'">
+                                <a class="{{bugorsold_Class}}" >
+                                    最高收购价格
+                                    <input class="item-note" style="margin-top:-4px;width:130px;height:30px;border-bottom:1px solid #F2F2F2;" ng-style="{color:((editableBusinessForm_button == 'false')||(doneWork.app_node!='handle2'))?'#B9B9B9':'#4B4B4B'}" type="number" placeholder="请输入收购价格"pattern="[0-9]*" oninput="if(value.length > 12)value=value.slice(0,12)" ng-model="doneWork.max_purchasing_price" ng-disabled="(editableBusinessForm_button == 'false')||(doneWork.app_node!='handle2')">
+                                </a>
+                            </li>
+                        </div> 
+                        <div ng-show="pendingWorkId == 'management' && in.vote_result.id == '01'">
+                            <li>
+                                <div class="{{vote_result_Class}}" >
+                                    转让基准日
+                                    <div class="searchDiv" ng-style="{color:((editableBusinessForm_button == 'false')||(doneWork.app_node!='handle2'))?'#B9B9B9':'#4B4B4B'}">{{doneWork.transfer_base_time}}
+                                        <ionic-datepicker input-obj="datepickerObjectEnd4" ng-show ="(editableBusinessForm_button == 'false')||(doneWork.app_node=='handle2')">
+                                            <div class = "icon ion-ios-calendar calendarIcon fc_bule"  ng-model="doneWork.transfer_base_time" ng-disabled="(editableBusinessForm_button == 'false')||(doneWork.app_node!='handle2')"></div>
+                                        </ionic-datepicker>
+                                    </div>                       
+                                </div>
+                            </li>
+                            <li>
+                                <div class="{{transfer_base_time_Class}}">
+                                    <div class="input-label" style="color: #444444 !important;font-size: 14px;">
+                                        上会决议处置方式<span class="star">*</span>
+                                    </div>
+                                    <select ng-model="in.meet_dispose_way_c" ng-style="{color:((editableBusinessForm_button == 'false')||(doneWork.app_node!='handle2'))?'#B9B9B9':'#4B4B4B'}" ng-init="doneWork.meet_dispose_way_c != null?in.meet_dispose_way_c=ways[(doneWork.meet_dispose_way_c.substring(1,3))]:in.meet_dispose_way_c= ways[0]" ng-options="way.name for way in ways"  ng-disabled="(editableBusinessForm_button == 'false')||(doneWork.app_node!='handle2')"></select>
+                                </div>
+                            </li>
+                            <li>
+                                <a class="{{meet_dispose_way_c_Class}}" >
+                                    其中上会决议回收现金
+                                    <span class="star">*</span>
+                                    <input class="item-note" style="margin-top:-4px;width:130px;height:30px;border-bottom:1px solid #F2F2F2;" ng-style="{color:((editableBusinessForm_button == 'false')||(doneWork.app_node!='handle2'))?'#B9B9B9':'#4B4B4B'}" type="number" placeholder="请输入回收现金"pattern="[0-9]*" oninput="if(value.length > 12)value=value.slice(0,12)" ng-model="doneWork.meet_recycle_cash" ng-disabled="(editableBusinessForm_button == 'false')||(doneWork.app_node!='handle2')">
+                                </a>
+                            </li>
+                            <li>
+                                <a class="{{meet_recycle_cash_Class}}" >
+                                    其中上会决议回收资产
+                                    <input class="item-note" style="margin-top:-4px;width:130px;height:30px;border-bottom:1px solid #F2F2F2;" ng-style="{color:((editableBusinessForm_button == 'false')||(doneWork.app_node!='handle2'))?'#B9B9B9':'#4B4B4B'}" type="number" placeholder="请输入回收资产"pattern="[0-9]*" oninput="if(value.length > 12)value=value.slice(0,12)" ng-model="doneWork.meet_recycle_asset" ng-disabled="(editableBusinessForm_button == 'false')||(doneWork.app_node!='handle2')">
+                                </a>
+                            </li>
+                            <li>
+                                <a class="{{meet_recycle_asset_Class}}" >
+                                    上会决议处置保留价        
+                                    <span class="item-note" >{{doneWork.meet_recycle_cash+doneWork.meet_recycle_asset |toThousands}}</span>                        
+                                </a>
+                            </li>
+                            <li>
+                                <div class="item item-input item-select">
+                                    <div class="input-label" style="color: #444444 !important;font-size: 14px;">
+                                        是否向财厅备案
+                                    </div>
+                                    <select ng-model="in.is_finan_sector_filing" ng-style="{color:((editableBusinessForm_button == 'false')||(doneWork.app_node!='handle2'))?'#B9B9B9':'#4B4B4B'}" ng-init="doneWork.is_finan_sector_filing=='01'?in.is_finan_sector_filing=whethers[1]:in.is_finan_sector_filing=whethers[2]" ng-options="whether.name for whether in whethers"  ng-disabled="(editableBusinessForm_button == 'false')||(doneWork.app_node!='handle2')"></select>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="{{is_finan_sector_filing_Class}}">
+                                    <div class="input-label" style="color: #444444 !important;font-size: 14px;">
+                                        是否公示
+                                    </div>
+                                    <select ng-model="in.is_publicity" ng-style="{color:((editableBusinessForm_button == 'false')||(doneWork.app_node!='handle2'))?'#B9B9B9':'#4B4B4B'}" ng-init="doneWork.is_publicity=='01'?in.is_publicity=whethers[1]:in.is_publicity=whethers[2]" ng-options="whether.name for whether in whethers"  ng-disabled="(editableBusinessForm_button == 'false')||(doneWork.app_node!='handle2')"></select>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="{{is_publicity_Class}}">
+                                    <div class="input-label" style="color: #444444 !important;font-size: 14px;">
+                                        向相关部门单位/单位征询行使优先购买权
+                                    </div>
+                                    <select ng-model="in.is_preemption" ng-style="{color:((editableBusinessForm_button == 'false')||(doneWork.app_node!='handle2'))?'#B9B9B9':'#4B4B4B'}" ng-init="doneWork.is_preemption=='01'?in.is_preemption=whethers[1]:in.is_preemption=whethers[2]" ng-options="whether.name for whether in whethers"  ng-disabled="(editableBusinessForm_button == 'false')||(doneWork.app_node!='handle2')"></select>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="{{is_preemption_Class}}">
+                                    <div class="input-label" style="color: #444444 !important;font-size: 14px;">
+                                        是否拍卖
+                                    </div>
+                                    <select ng-model="in.is_auction" ng-style="{color:((editableBusinessForm_button == 'false')||(doneWork.app_node!='handle2'))?'#B9B9B9':'#4B4B4B'}" ng-init="doneWork.is_auction=='01'?in.is_auction=whethers[1]:in.is_auction=whethers[2]" ng-options="whether.name for whether in whethers"  ng-disabled="(editableBusinessForm_button == 'false')||(doneWork.app_node!='handle2')"></select>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="{{is_auction_Class}}">
+                                    <div class="input-label" style="color: #444444 !important;font-size: 14px;">
+                                        是否向其他单位发通知
+                                    </div>
+                                    <select ng-model="in.is_circul_dept" ng-style="{color:((editableBusinessForm_button == 'false')||(doneWork.app_node!='handle2'))?'#B9B9B9':'#4B4B4B'}" ng-init="doneWork.is_circul_dept=='01'?in.is_circul_dept=whethers[1]:in.is_circul_dept=whethers[2]" ng-options="whether.name for whether in whethers"  ng-disabled="(editableBusinessForm_button == 'false')||(doneWork.app_node!='handle2')"></select>
+                                </div>
+                            </li>
+                        </div>
+                        <div ng-show="(pendingWorkId == 'investment' || pendingWorkId == 'fundInvestment') && in.vote_result.id == '01'">
+                            <li>
+                                <a class="{{is_circul_dept_Class}}" >
+                                    最高投资金额
+                                    <input class="item-note" style="margin-top:-4px;width:130px;height:30px;border-bottom:1px solid #F2F2F2;" ng-style="{color:((editableBusinessForm_button == 'false')||(doneWork.app_node!='handle2'))?'#B9B9B9':'#4B4B4B'}" type="number" placeholder="请输入投资金额"pattern="[0-9]*" oninput="if(value.length > 12)value=value.slice(0,12)" ng-model="doneWork.invest_amount" ng-disabled="(editableBusinessForm_button == 'false')||(doneWork.app_node!='handle2')">
+                                </a>
+                            </li>
+                            <li>
+                                <a class="{{invest_amount_Class}}" >
+                                    收益率(%)
+                                    <input class="item-note"type="text" ng-model="doneWork.yield_rate" ng-style="{color:(doneWork.meet_issue!=null&&((editableBusinessForm_button == 'false')||(doneWork.app_node!='handle2'))?'#B9B9B9':'#4B4B4B'}" ng-disabled="(editableBusinessForm_button == 'false')||(doneWork.app_node!='handle2')" maxlength="15" style="margin-top:-4px;width:130px;height:30px;border-bottom:1px solid #F2F2F2;" placeholder="请输入收益率">
+                                </a>
+                            </li>
+                            <li>
+                                <a class="{{yield_rate_Class}}" >
+                                    期限
+                                    <input class="item-note"type="text" ng-model="doneWork.meet_issue" ng-style="{color:doneWork.meet_issue!=null&&((editableBusinessForm_button == 'false')||(doneWork.app_node!='handle2'))?'#B9B9B9':'#4B4B4B'}" ng-disabled="(editableBusinessForm_button == 'false')||(doneWork.app_node!='handle2')" maxlength="15" style="margin-top:-4px;width:130px;height:30px;border-bottom:1px solid #F2F2F2;" placeholder="请输入期限">
+                                </a>
+                            </li>
+                        </div>
+                        <li>
+                            <a class="{{meet_issue_Class}}" >
+                                    业审会内容
+                                <textarea  rows="3" class="marTop10 text_border w100" ng-style="{color:((editableBusinessForm_button == 'false')||(doneWork.app_node!='handle2'))?'#B9B9B9':'#4B4B4B'}" maxlength="1000" ng-model="doneWork.council_summary_report" ng-disabled="(editableBusinessForm_button == 'false')||(doneWork.app_node!='handle2')"></textarea>                    
+                            </a>
+                        </li>
+                        
+                    </ul>
+                    <ul class="list">
+                        <li class="item item-divider item-text-wrap dd3-bg center">
+                            <span class="listFont2">审查人员</span>
+                        </li>
+                        <li>
+                            <div class="item listFont1 pos_rel" >
+                                业务审查部业务审查审查员
+                                <span class="star">*</span>  
+                                <div class="searchDiv" ng-style="{color:doneWork.examinantName!=null&&((editableBusinessForm_button == 'false')||(doneWork.app_node!='zonghegang'))?'#B9B9B9':'#4B4B4B'}">{{doneWork.examinantName}}
+                                <div class = "icon ion-search searchIcon fc_bule"ng-click="((editableBusinessForm_button == 'false')||(doneWork.app_node!='zonghegang')) || searchPeope3()"  ng-disabled="(editableBusinessForm_button == 'false')||(doneWork.app_node!='zonghegang')"></div>
+                                </div>                       
+                            </div>
+                        </li>
+                        <li>
+                            <div class="{{examinantName_Class}}" >
+                                业务审查部综合意见经办
+                                <span class="star">*</span>  
+                                <div class="searchDiv"  ng-style="{color:doneWork.unitExaminantName!=null&&((editableBusinessForm_button == 'false')||(doneWork.app_node!='yewuzonghe'))?'#B9B9B9':'#4B4B4B'}">{{doneWork.unitExaminantName}}
+                                <div class = "icon ion-search searchIcon fc_bule"ng-click="((editableBusinessForm_button == 'false')||(doneWork.app_node!='yewuzonghe')) || searchPeope4()" ng-disabled="(editableBusinessForm_button == 'false')||(doneWork.app_node!='yewuzonghe')"></div>
+                                </div>                       
+                            </div>
+                        </li>
+                        <li>
+                            <div class="{{unitExaminantName_Class}}" >
+                                业务审查部项目批复经办
+                                <span class="star">*</span>  
+                                <div class="searchDiv" ng-style="{color:doneWork.replyExaminantName!=null&&((editableBusinessForm_button == 'false')||(doneWork.app_node!='yewupifu'))?'#B9B9B9':'#4B4B4B'}">{{doneWork.replyExaminantName}}
+                                <div class = "icon ion-search searchIcon fc_bule"ng-click="((editableBusinessForm_button == 'false')||(doneWork.app_node!='yewupifu')) || searchPeope5()" ng-disabled="(editableBusinessForm_button == 'false')||(doneWork.app_node!='yewupifu')"></div>
+                                </div>                       
+                            </div>
+                        </li>
+                        
+                    </ul>
+                    </div>
+                    <div ng-show="pendingWorkId == 'payment'">
+                    <ul class="list">
+                            <li class="item item-divider item-text-wrap dd3-bg center">
+                                <span class="listFont2">付款审批</span>
+                            </li>
+                            <li>
+                                <a class="item listFont1" >
+                                    付款管理单号
+                                    <span class="item-note">{{doneWork.receipt_number}}</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="item listFont1" >
+                                    经办人
+                                    <span class="item-note">{{doneWork.owner_name}}</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="item listFont1" >
+                                    经办人部门
+                                    <span class="item-note">{{doneWork.dept}}</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="item listFont1" >
+                                    付款金额
+                                    <span class="item-note">{{doneWork.payment_amount|toThousands}}</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="item listFont1" >
+                                    申请时间
+                                    <span class="item-note">{{doneWork.application_date| date: "yyyy-MM-dd"}}</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="item listFont1" >
+                                        审批状态
+                                    <span class="item-note">{{doneWork.approval_status_name}}</span>
+                                </a>
+                            </li>
+                    </ul>
+                    <ul class="list">
+                            <li class="item item-divider item-text-wrap dd3-bg center">
+                                <span class="listFont2">基本信息</span>
+                            </li>
+                            <li>
+                                <a class="item listFont1" >
+                                    台账来源
+                                    <span class="item-note">{{doneWork.expense_type_name}}</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="item listFont1" >
+                                    产品
+                                    <span class="item-note">{{doneWork.expense_detail_name}}</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="item listFont1" >
+                                    付款期限
+                                    <span class="item-note">{{doneWork.credit_period}}</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="item listFont1" >
+                                    财务事件
+                                    <span class="item-note">{{doneWork.finance_event_name}}</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="item listFont1" >
+                                    是否投融资或收购
+                                    <span class="item-note">{{doneWork.is_purchase_or_finservice_name}}</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="item listFont1" >
+                                    单据及附件页数
+                                    <span class="item-note">{{doneWork.pages_number}}</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="item listFont1" >
+                                    摘要
+                                    <textarea  rows="3" class="marTop10 text_border w100" ng-style="{color:doneWork.app_node!='111'?'#B9B9B9':'#4B4B4B'}" maxlength="1000" ng-disabled="doneWork.app_node!='111'" > {{doneWork.fkabstract}}</textarea>                    
+                                </a>
+                            </li>
+                            <li>
+                                <a class="item listFont1" >
+                                        完成情况
+                                    <textarea  rows="3" class="marTop10 text_border w100" ng-style="{color:doneWork.app_node!='111'?'#B9B9B9':'#4B4B4B'}" maxlength="1000" ng-disabled="doneWork.app_node!='111'" > {{doneWork.completion}}</textarea>                    
+                                </a>
+                            </li>
+                            <li>
+                                <a class="item listFont1" >
+                                        备注
+                                    <textarea  rows="3" class="marTop10 text_border w100" ng-style="{color:doneWork.app_node!='111'?'#B9B9B9':'#4B4B4B'}" maxlength="1000" ng-disabled="doneWork.app_node!='111'" > {{doneWork.memo}}</textarea>                    
+                                </a>
+                            </li>
+                    </ul>
+                    <ul class="list">
+                            <li class="item item-divider item-text-wrap dd3-bg center">
+                                <span class="listFont2">合同信息</span>
+                            </li>
+                            <li>
+                                <a class="item listFont1" >
+                                    是否按合同付款
+                                    <span class="item-note">{{doneWork.whether_contract_payment_name}}</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="item listFont1" >
+                                    合同编号
+                                    <span class="item-note">{{doneWork.contract_no}}</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="item listFont1" >
+                                    项目名称
+                                    <span class="item-note">{{doneWork.project_name}}</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="item listFont1" >
+                                    合同名称
+                                    <span class="item-note">{{doneWork.contract_name}}</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="item listFont1" >
+                                    合同对象
+                                    <span class="item-note">{{doneWork.contract_type_two_name}}</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="item listFont1" >
+                                    合同约定付款金额
+                                    <span class="item-note">{{doneWork.cot_deal_total_amount_rmb|toThousands}}</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="item listFont1" >
+                                    已付款金额
+                                    <span class="item-note">{{doneWork.prepaid_amount_summary|toThousands}}</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="item listFont1" >
+                                    合同负责人
+                                    <span class="item-note">{{doneWork.principal}}</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="item listFont1" >
+                                    是否将保证金转价款
+                                    <span class="item-note">{{doneWork.is_guarantee_name}}</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="item listFont1" >
+                                    保证金金额
+                                    <span class="item-note">{{doneWork.guarantee_amount|toThousands}}</span>
+                                </a>
+                            </li>
+                    </ul>
+                    <ul class="list">
+                            <li class="item item-divider item-text-wrap dd3-bg center">
+                                <span class="listFont2">付款信息</span>
+                            </li>
+                            <li>
+                                <a class="item listFont1" >
+                                    收款单位
+                                    <span class="item-note">{{doneWork.receiving_unit_name}}</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="item listFont1" >
+                                    收款单位账号
+                                    <span class="item-note">{{doneWork.payment_account}}</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="item listFont1" >
+                                    收款户名
+                                    <span class="item-note">{{doneWork.bank_account_name}}</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="item listFont1" >
+                                    开户银行
+                                    <span class="item-note">{{doneWork.bank_code}}</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="item listFont1" >
+                                    汇款单编号
+                                    <span class="item-note">{{doneWork.money_order_number}}</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="item listFont1" >
+                                    付款金额(剔税)
+                                    <span class="star">*</span>
+                                    <input class="item-note" style="margin-top:-4px;width:130px;height:30px;border-bottom:1px solid #F2F2F2;"type="number" placeholder="请输入付款金额"pattern="[0-9]*" oninput="if(value.length > 12)value=value.slice(0,12)" ng-model="doneWork.net_amount" ng-style="{color:((editableBusinessForm_button == 'false')||(doneWork.app_node!='3'))?'#B9B9B9':'#4B4B4B'}" ng-disabled="(editableBusinessForm_button == 'false')||(doneWork.app_node!='3')"/>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="{{net_amount_Class}}" >
+                                    增值税专用发票税额
+                                    <span class="star">*</span>
+                                    <input class="item-note" style="margin-top:-4px;width:130px;height:30px;border-bottom:1px solid #F2F2F2;"type="number" placeholder="请输入发票税额"pattern="[0-9]*" oninput="if(value.length > 12)value=value.slice(0,12)" ng-model="doneWork.added_value_tax" ng-style="{color:((editableBusinessForm_button == 'false')||(doneWork.app_node!='3'))?'#B9B9B9':'#4B4B4B'}" ng-disabled="(editableBusinessForm_button == 'false')||(doneWork.app_node!='3')"/>
+                                </a>
+                            </li>
+                            <li>
+                                <div class="{{added_value_tax_Class}}" >
+                                    实际付款日期
+                                    <span class="star">*</span>  
+                                    <div class="searchDiv" ng-style="{color:((editableBusinessForm_button == 'false')||(doneWork.app_node!='3'))?'#B9B9B9':'#4B4B4B'}">{{doneWork.actual_pay_date| date: "yyyy-MM-dd"}}
+                                        <ionic-datepicker input-obj="datepickerObjectEnd3" ng-show ="(editableBusinessForm_button == 'false')||(doneWork.app_node=='3')">
+                                            <div class = "icon ion-ios-calendar calendarIcon fc_bule"  ng-model="doneWork.actual_pay_date" ng-disabled="(editableBusinessForm_button == 'false')||(doneWork.app_node!='3')"></div>
+                                        </ionic-datepicker>
+                                    </div>                       
+                                </div>
+                            </li>
+                    </ul>
+                    <ul class="list">
+                        <li class="item item-divider item-text-wrap dd3-bg center">
+                                <span class="listFont2">保证金信息</span>
+                        </li>
+                        <div  ng-repeat="bond in doneWork.listCash" style="border-bottom:10px solid #EEEEEE;">
+                            <li>
+                                <a class="item listFont1" >
+                                    保证金编号
+                                    <span class="item-note">{{bond.guaranteeNo}}</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="item listFont1" >
+                                    项目名称
+                                    <span class="item-note">{{bond.projectName}}</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="item listFont1" >
+                                    保证金金额
+                                    <span class="item-note">{{bond.guaranteeAmount|toThousands}}</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="item listFont1" >
+                                    经办人
+                                    <span class="item-note">{{bond.ownerName}}</span>
+                                </a>
+                            </li>
+                        </div>
+                    </ul>
+                    <ul class="list">
+                            <li class="item item-divider item-text-wrap dd3-bg center">
+                                <span class="listFont2">付款账号</span>
+                            </li>
+                            <div class=" item-divider  pos_rel heightH20">
+                                    <button class="button  button-positive select_button" ng-click="((editableBusinessForm_button == 'false')||(doneWork.app_node!='3')) ||create()" ng-disabled="(editableBusinessForm_button == 'false')||(doneWork.app_node!='3')">
+                                        <span>新增</span>
+                                    </button>
+                                    <button class="button  button-positive confirm_button" ng-click="((editableBusinessForm_button == 'false')||(doneWork.app_node!='3')) ||delete1()" ng-disabled="(editableBusinessForm_button == 'false')||(doneWork.app_node!='3')">
+                                        <span>删除</span>
+                                    </button>
+                            </div>
+                            <div ng-repeat="account in doneWork.payAccounts" ng-class="{'selectColor':(isActiveId == account.id)}"style="border-bottom:10px solid #EEEEEE;" ng-click="choose(account.id)"> 
+                            <li>
+                                <div class="item22 listFont1 pos_rel" >
+                                    付款银行账号
+                                    <span class="star">*</span>  
+                                    <div class="searchDiv"  style="width:187px"  ng-style="{color:account.department!=null&&doneWork.app_node!='3'?'#B9B9B9':'#4B4B4B'}">{{account.payment_bank_account}}
+                                        <div class = "icon ion-search searchIcon fc_bule"ng-click="doneWork.app_node!='3' || searchAccount(account.id)" ng-disabled="doneWork.app_node!='3'"></div>
+                                    </div>                       
+                                </div>
+                            </li>
+                            <li>
+                                <a class="{{payment_bank_account_Class}}" >
+                                    付款开户行名称
+                                    <span class="star">*</span>  
+                                    <span class="item-note">{{account.bank_name}}</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="item22 listFont1" >
+                                    付款账号名称
+                                    <span class="star">*</span>  
+                                    <span class="item-note">{{account.bank_account_name}}</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="{{pay_amount_Class}}" >
+                                    对应银行账户付款金额
+                                    <span class="star">*</span>
+                                    <input class="item-note" style="margin-top:-4px;width:130px;height:30px;border-bottom:1px solid #F2F2F2;"type="number" placeholder="请输入付款金额"pattern="[0-9]*" oninput="if(value.length > 12)value=value.slice(0,12)" ng-model="account.pay_amount">
+                                </a>
+                            </li>
+                        </div>
+                    </ul>
+                    </div>
+                    <ul class="list" ng-repeat="listAsset in listAssets">
+                            <li  ng-repeat="a in listAsset.data">
+                                <div class="item pos_rel w100" ng-show="a.listAsset_isLength== 'false'">
+                                    <div class="tableListL padTop7 listFont1">{{a.key}}</div>
+                                    <div class="tableListR padTop5 listFont1">{{a.value}}</div>
+                                </div>
+                                <div class="item13 w100  pos_rel padding20" ng-show="a.listAsset_isLength== 'true'">
+                                    <div class=" approvalDiv2 paddingTop15 listFont1">
+                                        {{a.key}}
+                                    </div>
+                                    <div class=" approvalDiv3 paddingTop9 listFont1">
+                                        {{a.value}}
+                                    </div>                   
+                                </div>
+                            </li>
+                    </ul>     
+                    <ul class="list">
+                    
+                        <li class="item item-divider item-text-wrap dd3-bg center">
+                            <span class="listFont2">表单附件</span>
+                        </li>
+                        <li >
+                            <div class="item pos_rel w100">
+                                <div class="tableListL padTop5 fs_16">文件名</div>
+                                <div class="tableListR padTop5 fs_16">创建人</div>
+                            </div>
+                        </li>
+                        <li  ng-repeat="Enclosure in Enclosures">
+                            <div class="item pos_rel w100"  ng-show="Enclosure.Enclosure_isLength== '1'"  ng-click="downLoadMethod(Enclosure.absolute_url,Enclosure.file_name)">
+                                    <div class="tableListL padTop7 listFont1">{{Enclosure.file_name}}</div>
+                                    <div class="tableListR padTop7 listFont1">{{Enclosure.created_by}}</div>
+                            </div>
+                            <div class="item12 w100  pos_rel padding20" ng-show="Enclosure.Enclosure_isLength== '2'"  ng-click="downLoadMethod(Enclosure.absolute_url,Enclosure.file_name)">
+                                <div class="approvalDiv2 paddingTop9 listFont1">
+                                    {{Enclosure.file_name}}
+                                </div>
+                                <div class="approvalDiv3 paddingTop15 listFont1">
+                                    {{Enclosure.created_by}}
+                                </div>                   
+                            </div>
+                            <div class="item12 w100  pos_rel padding30" ng-show="Enclosure.Enclosure_isLength== '3'"  ng-click="downLoadMethod(Enclosure.absolute_url,Enclosure.file_name)">
+                                <div class="approvalDiv2 paddingTop9 listFont1">
+                                    {{Enclosure.file_name}}
+                                </div>
+                                <div class="approvalDiv3 paddingTop25 listFont1">
+                                    {{Enclosure.created_by}}
+                                </div>                   
+                            </div>
+                        </li>             
+                    </ul>
+                    <li class="item item-divider">
+                            <button class="button button-full button-positive" ng-show="(editableBusinessForm_button == 'true')&& (starter_button == 'false')" ng-click="Signin()">
+                                <span>保存</span>
+                            </button>
+                    </li>
+                </div>
+                <div class="list padding" ng-show="app_pro">
+                        <ul class="list">
+                            <li class="item item-divider item-text-wrap dd3-bg center">
+                                <span class="listFont2">当前流程</span>
+                            </li>
+                            <li  ng-repeat="circuit in circuits">        
+                                <div class="item11 w100 approvalRow pos_rel height70" ng-click="open ='1'">
+                                    <div class=" approvalDiv left0 w25 paddingTop9">
+                                    <div class="approvalDate ">{{circuit.completeTimeStr}}</div>  
+                                    </div>
+                                    <div class=" approvalDiv left25 fs_14 w40 paddingTop20">
+                                            <a  ng-class="circuit.isCurrent == 'false'?'fc_green':'fc_red'">{{circuit.taskna}}</a>
+                                    </div>
+                                    <div class=" approvalDiv right0 w35 paddingTop20">
+                                            <a class="listFont1 " >审批人：{{circuit.taskAssigneeName}}</a>
+                                    </div>                           
+                                </div>
+                                <div ng-show = "circuit.isLong == 'true'">
+                                    <a class="item listFont1"  ng-show="open =='1'?true:false" ng-click="open=''">
+                                        办理意见 
+                                        <textarea  rows="3" class="marTop10 text_border w100 fc_red" ng-class="circuit.color" ng-style="{color:doneWork.app_node!='111'?'#B9B9B9':'#4B4B4B'}" maxlength="1000" ng-disabled="doneWork.app_node!='111'"  ng-model="circuit.comment"> </textarea>                    
+                                    </a>
+                                </div>
+                                <div ng-show = "circuit.isLong == 'false'">
+                                    <div class="item11 w100 approvalRow pos_rel height70" ng-show="open =='1'?true:false" ng-click="open=''">
+                                        <div class=" approvalDiv  fs_14 w50 paddingTop20">
+                                                <a class="listFont1 " >办理意见</a>
+                                        </div>
+                                        <div class=" approvalDiv left50 fs_14 w50 paddingTop20">
+                                                <a ng-class="circuit.color">{{circuit.comment}}</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    <div ng-show="isNotify!= 'notify'">
+                        <ul class="list">
+                                <li class="item item-divider item-text-wrap dd3-bg center">
+                                    <span class="listFont2">流程办理</span>
+                                </li>
+                                <li>        
+                                    <div class="item w100 approvalRow">
+                                        <div class="width33 approvalDiv left0">
+                                            <input type="radio" name="sex" ng-model="in.choose" value="同意" style="margin-right: 10px;" ng-click="getIdea()"/>
+                                            <a class="listFont1 approvalLabel"> 同意</a>
+                                        </div>
+                                        <div class="width33 approvalDiv left33">
+                                            <input type="radio" name="sex" value="不同意" style="margin-right: 10px" ng-model="in.choose" ng-click="getIdea()"/>
+                                            <a class="listFont1 approvalLabel"> 不同意</a>
+                                        </div>
+                                        <div class="width33 approvalDiv right0">
+                                                <input type="radio" name="sex" ng-model="in.choose" value="已阅" style="margin-right: 10px" ng-click="getIdea()"/>
+                                                <a class="listFont1 approvalLabel" > 已阅</a>    
+                                        </div>    
+                                    </div>
+                                </li>  
+                                <div ng-show="( returnable_button =='true') &&( starter_button =='false')">
+                                    <li>        
+                                        <div class="item w100 approvalRow">
+                                                <div class="w50 approvalDiv left0">
+                                                    <input type="radio" name="sex" ng-model="in.isReject" value="applyNode" style="margin-right: 10px" ng-click="rejectParm()"/>
+                                                    <a class="listFont1 approvalLabel"> 驳回申请人</a>
+                                                </div>
+                                                <div class="w50 approvalDiv right0">
+                                                    <input type="radio" name="sex" ng-model="in.isReject" value="lastNode" style="margin-right: 10px" ng-click="rejectParm()"/>
+                                                    <a class="listFont1 approvalLabel"> 驳回上一级</a>
+                                                </div> 
+                                        </div>
+                                    </li>   
+                                    <li>        
+                                            <div class="item w100 approvalRow">
+                                                <div class="w50 approvalDiv left0">
+                                                    <input type="radio" name="sex"  ng-model="in.isReject" value="anyNode" style="margin-right: 10px" ng-click="rejectObj()"/>
+                                                    <a class="listFont1 approvalLabel"> 驳回到任意一级 </a>
+                                                </div>
+                                                <div class="w50 approvalDiv right0">
+                                                        <a class="listFont1 approvalLabel">  {{rejectPosition}}</a>
+                                                </div>
+                                            </div>
+                                    </li> 
+                                </div> 
+                                <li ng-show="('同意'==in.choose||'不同意'==in.choose||'已阅'==in.choose) &&( addTask_button =='true') &&( starter_button =='false')">
+                                        <div class="item listFont1 pos_rel approvalRow" >
+                                            <div class="w100 approvalDiv left0">
+                                                        <input type="radio" name="sss"  ng-model="in.isCountersigne" value="加签" style="margin-right: 10px" ng-click="countersigne()"/>
+                                                        <a class="listFont1 approvalLabel"> 加签</a>
+                                            </div>
+                                            <div class="searchDiv">{{countersigner}}                                        
+                                            <div class = "icon ion-search searchIcon fc_bule" ng-click="in.isCountersigne!='加签' || searchPeope6()"  ng-disabled="in.isCountersigne!='加签'"></div>
+                                            </div>                       
+                                        </div>
+                                </li>
+
+                                <li ng-show="('同意'==in.choose||'不同意'==in.choose||'已阅'==in.choose)&&( addTask_button =='true') &&( starter_button =='false')">
+                                        <div class="item listFont1 pos_rel approvalRow">
+                                            <div class="w100 approvalDiv left0">
+                                                        <input type="radio" name="sss"  ng-model="in.isAdministrat" value="会办" style="margin-right: 10px" ng-click="administrat()"/>
+                                                        <a class="listFont1 approvalLabel"> 会办</a>
+                                            </div>
+                                            <div class="searchDiv">{{administrator}}
+                                            <div class = "icon ion-search searchIcon fc_bule" ng-click="in.isAdministrat!='会办' || searchPeope7()"  ng-disabled="in.isAdministrat!='会办'"></div>
+                                            </div>                       
+                                        </div>
+                                </li>
+                        </ul>
+                        <ul class="list">
+                                    <li class="item item-divider item-text-wrap dd3-bg center">
+                                        <span class="listFont2">办理意见</span>
+                                    </li>
+                                    <li>
+                                        <a class="item listFont1" >
+                                            <textarea  rows="3" class="marTop10 text_border w100"  maxlength="1000" ng-model="doneWork.fpRemark"> </textarea>                    
+                                        </a>
+                                    </li>  
+                        </ul>
+                        <li class="item item-divider" style="margin-bottom: 70px;">
+                            <button class="button button-full button-positive" ng-show="( submitable_button =='true') &&( starter_button =='false')"  ng-click="Signout()">
+                                <span>提交</span>
+                            </button>
+                        </li>
+                    </div>
+                </div>
+            </div>
+      </ion-content>
+  </ion-view>
+  
